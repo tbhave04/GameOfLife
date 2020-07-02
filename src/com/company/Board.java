@@ -1,7 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
-
 public class Board {
     private int[][] board;
     private final int height;
@@ -13,9 +11,9 @@ public class Board {
     }
 
     public void fillBoard(){
-        for(int i = 0; i<height; i++){
-            for(int j = 0;j<width; j++){
-                int random = (int)Math.random();
+        for(int i = 0; i<width; i++){
+            for(int j = 0;j<height; j++){
+                int random = (int)(Math.random()*2);
                 board[i][j] = random;
             }
         }
@@ -31,5 +29,13 @@ public class Board {
 
     public void setState(int x, int y, int val){
         board[x][y] = val;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
+    public int getWidth(){
+        return width;
     }
 }

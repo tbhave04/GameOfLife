@@ -4,14 +4,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Panel extends JPanel {
     private JButton[][] displayBoard;
-
+    int[][] board;
+    Board gameBoard;
     public Panel(Board gameBoard){
+        this.gameBoard = gameBoard;
         setLayout(new GridLayout(gameBoard.getWidth(), gameBoard.getHeight()));
         displayBoard = new JButton[gameBoard.getWidth()][gameBoard.getHeight()];
-        int[][] board = gameBoard.getBoard();
+        board = gameBoard.getBoard();
 
         for(int i = 0; i < gameBoard.getWidth(); i++) {
             for (int j = 0; j < gameBoard.getHeight(); j++) {
@@ -26,4 +29,15 @@ public class Panel extends JPanel {
             }
         }
     }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+        try{
+            Thread.sleep(10);
+        } catch(Exception e){}
+        repaint();
+    }
+
+
 }

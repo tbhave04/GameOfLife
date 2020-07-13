@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Holds game state
+ */
 public class Board {
     private int[][] board;
     private final int height;
@@ -12,11 +15,17 @@ public class Board {
     }
 
     public Board(int[][] array){
-        board = array;
         height = array.length;
         width = array[0].length;
+        board = new int[height][width];
+        for(int i = 0; i < height; i++){
+            System.arraycopy(array[i], 0, board[i], 0, width);
+        }
     }
 
+    /**
+     * Fills board with random 0's and 1's
+     */
     public void fillBoard(){
         for(int i = 0; i<width; i++){
             for(int j = 0;j<height; j++){
@@ -26,16 +35,17 @@ public class Board {
         }
     }
 
+    public void printBoard(){
+        for(int i = 0; i<height; i++){
+            for(int j = 0; j<width; j++){
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
     public int[][] getBoard(){
         return board;
-    }
-
-    public int getState(int x, int y){
-        return board[x][y];
-    }
-
-    public void setState(int x, int y, int val){
-        board[x][y] = val;
     }
 
     public int getHeight(){
